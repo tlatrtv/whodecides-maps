@@ -1,13 +1,143 @@
-html,
-body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    font-family: Arial, sans-serif;
+:root {
+  --navy: #071a3d;
+  --paper: #f8f3e9;
+  --yellow: #ffd31f;
+  --orange: #ff6c2f;
+  --pink: #ef5ba1;
+  --green: #69b84f;
+  --lav: #aeb3ff;
 }
 
-#map {
-    width: 100vw;
-    height: 100vh;
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--navy);
+  font-family: "Public Sans", sans-serif;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.map-app {
+  width: 100%;
+  min-height: 100vh;
+  padding: 16px;
+  background: var(--paper);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.controls input,
+.controls select {
+  min-width: 150px;
+  padding: 9px 10px;
+  border: 2px solid var(--navy);
+  border-radius: 3px;
+  background: white;
+  color: var(--navy);
+}
+
+.controls input {
+  flex: 1 1 240px;
+}
+
+.controls select {
+  flex: 0 1 220px;
+}
+
+.map-frame {
+  position: relative;
+  width: 100%;
+  height: 465px;
+  background: #fbf7ef;
+}
+
+.map-frame::after {
+  position: absolute;
+  z-index: 20;
+  inset: 0;
+  border: 2px solid var(--navy);
+  content: "";
+  pointer-events: none;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 10px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  border: 1px solid var(--navy);
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.dot.low {
+  background: var(--pink);
+}
+
+.dot.medium {
+  background: var(--orange);
+}
+
+.dot.near {
+  background: var(--yellow);
+}
+
+.dot.parity {
+  background: var(--green);
+}
+
+.map-error {
+  padding: 12px;
+  border: 2px solid var(--navy);
+  background: var(--orange);
+  color: white;
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .map-app {
+    padding: 10px;
+  }
+
+  .controls {
+    flex-direction: column;
+  }
+
+  .controls input,
+  .controls select {
+    width: 100%;
+  }
+
+  .map-frame {
+    height: 420px;
+  }
 }
