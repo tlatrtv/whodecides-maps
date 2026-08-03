@@ -1,20 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Who Decides Maps</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <script src="https://cdn.plot.ly/plotly-3.1.0.min.js"></script>
+  <title>Who Decides Map</title>
 
-    <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700&family=Public+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+  <main class="map-app">
+    <div class="controls">
+      <input
+        id="citySearch"
+        type="search"
+        placeholder="Search city or state"
+        aria-label="Search city or state"
+      >
 
-    <div id="map"></div>
+      <select id="typeFilter" aria-label="Filter by city type">
+        <option value="all">All city types</option>
+      </select>
+    </div>
 
-    <script src="map.js"></script>
+    <div id="map" class="map-frame"></div>
 
+    <div class="legend" aria-label="Youth Representation Ratio legend">
+      <span><i class="dot low"></i> Below 0.50</span>
+      <span><i class="dot medium"></i> 0.50–0.74</span>
+      <span><i class="dot near"></i> 0.75–0.99</span>
+      <span><i class="dot parity"></i> 1.00+</span>
+    </div>
+
+    <p id="mapError" class="map-error" hidden>
+      City data could not be loaded.
+    </p>
+  </main>
+
+  <script src="map.js"></script>
 </body>
 </html>
